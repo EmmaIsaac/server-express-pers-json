@@ -1,5 +1,9 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { randomUUID, createHash } from "node:crypto";
+import dotenv from "dotenv";
+
+dotenv.config();
+const PATH_FILE_CARS = process.env.PATH_FILE_CARS;
 
 const getCars = (url) => {
   const exists = existsSync(url);
@@ -13,4 +17,11 @@ const getCars = (url) => {
   return cars;
 };
 
-export { getCars };
+const getCarById = (id) => {
+  const cars = getCars(PATH_FILE_CARS);
+  const car = cars.find((car) => car.id === id);
+
+  return car;
+};
+
+export { getCars, getCarById };

@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { getCars } from "./models.js";
+import { getCars, getCarById } from "./models.js";
 
 const app = express();
 
@@ -18,8 +18,21 @@ app.get("/api/cars", (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-//get id
+//get by id
+app.get("/api/cars/:id", (req, res) => {
+  try {
+    const { id } = req.params;
+    const car = getCarById(id);
+
+    if (!car) return res.status(404).json({ error: "car not found" });
+
+    res.json(car);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 //post
+
 //put
 //delete
 
