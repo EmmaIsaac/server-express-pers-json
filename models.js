@@ -40,4 +40,16 @@ const addCar = (brand, model, year) => {
   return newCar;
 };
 
-export { getCars, getCarById, addCar };
+const updateCar = (id, brand, model, year) => {
+  const cars = getCars(PATH_FILE_CARS);
+
+  const foundCar = cars.find((car) => car.id === id);
+
+  if (brand) foundCar.brand = brand;
+  if (model) foundCar.model = model;
+  if (year) foundCar.year = Number(year);
+
+  writeFileSync(PATH_FILE_CARS, JSON.stringify(cars));
+  return foundCar;
+};
+export { getCars, getCarById, addCar, updateCar };

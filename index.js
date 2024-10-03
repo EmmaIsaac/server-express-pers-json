@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { getCars, getCarById, addCar } from "./models.js";
+import { getCars, getCarById, addCar, updateCar } from "./models.js";
 
 const app = express();
 
@@ -46,7 +46,19 @@ app.post("/api/cars", (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-//put
+//patch
+app.patch("/api/cars/:id", (req, res) => {
+  try {
+    const { id } = req.params;
+    const { brand, model, year } = req.body;
+
+    const car = updateCar(id, brand, model, year);
+    res.status(200).json(car);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 //delete
 
 app.listen(PORT, () => {
