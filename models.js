@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
-import { randomUUID, createHash } from "node:crypto";
+import { randomUUID } from "node:crypto";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -24,4 +24,20 @@ const getCarById = (id) => {
   return car;
 };
 
-export { getCars, getCarById };
+const addCar = (brand, model, year) => {
+  const cars = getCars(PATH_FILE_CARS);
+
+  const newCar = {
+    id: randomUUID(),
+    brand,
+    model,
+    year: Number(year),
+  };
+
+  cars.push(newCar);
+
+  writeFileSync(PATH_FILE_CARS, JSON.stringify(cars));
+  return newCar;
+};
+
+export { getCars, getCarById, addCar };
