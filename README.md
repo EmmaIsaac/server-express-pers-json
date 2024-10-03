@@ -12,8 +12,8 @@ Este proyecto es una API simple construida con Express para administrar un catal
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
+git clone https://github.com/EmmaIsaac/server-express-pers-json.git
+cd server-express-pers-json
 ```
 
 ### Instalar las dependencias
