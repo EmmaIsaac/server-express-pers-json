@@ -60,24 +60,24 @@ GET api/cars
 
 ```json
 [
-{
-  "id":"f1d5a7f2-e6bc-4e90-8a1e-70a7c57cfcf1",
-  "brand":"Tesla",
-  "model":"Model 3",
-  "year":2022
-},
-{
-  "id":"c2b9c3fa-7c3b-4829-92d2-4b0fa2a1e1a1",
-  "brand":"Honda",
-  "model":"Civic",
-  "year":2020
-},
-{
-  "id":"53b1ebe8-e22b-4e39-9b10-d82b0b78f0d5",
-  "brand":"Chevrolet",
-  "model":"Virtus","
-  year":2024
-}
+  {
+    "id": "f1d5a7f2-e6bc-4e90-8a1e-70a7c57cfcf1",
+    "brand": "Tesla",
+    "model": "Model 3",
+    "year": 2022
+  },
+  {
+    "id": "c2b9c3fa-7c3b-4829-92d2-4b0fa2a1e1a1",
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2020
+  },
+  {
+    "id": "53b1ebe8-e22b-4e39-9b10-d82b0b78f0d5",
+    "brand": "Chevrolet",
+    "model": "Virtus",
+    "year": 2024
+  }
 ]
 ```
 
