@@ -52,4 +52,15 @@ const updateCar = (id, brand, model, year) => {
   writeFileSync(PATH_FILE_CARS, JSON.stringify(cars));
   return foundCar;
 };
-export { getCars, getCarById, addCar, updateCar };
+
+const deleteCar = (id) => {
+  const cars = getCars(PATH_FILE_CARS);
+  const carToDelete = getCarById(id);
+
+  const filteredCars = cars.filter((car) => car.id !== id);
+
+  writeFileSync(PATH_FILE_CARS, JSON.stringify(filteredCars));
+  return carToDelete;
+};
+
+export { getCars, getCarById, addCar, updateCar, deleteCar };

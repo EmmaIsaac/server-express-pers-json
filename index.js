@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { getCars, getCarById, addCar, updateCar } from "./models.js";
+import { getCars, getCarById, addCar, updateCar, deleteCar } from "./models.js";
 
 const app = express();
 
@@ -58,8 +58,24 @@ app.patch("/api/cars/:id", (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
-
 //delete
+app.delete("/api/cars/:id", (req, res) => {
+  const { id } = req.params;
+
+  const car = getCarById(id);
+
+  if (!car) {
+    return res.status(404).json({ error: "car not found" });
+  }
+
+  deleteCar(id);
+  res.json(car);
+});
+
+// Middleware
+app.use("*", (req, res) => {
+  res.status(404).json({ error: "resource not found" });
+});
 
 app.listen(PORT, () => {
   console.log(`Server on listening on port http://localhost:${PORT}`);
